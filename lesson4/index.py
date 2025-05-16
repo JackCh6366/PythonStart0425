@@ -1,12 +1,12 @@
 print("Hello!Flask!")
 
-from flask import Flask
+from flask import Flask , render_template
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "<h1>Hello, Flask!</h1><p>這是我的第1頁</p>"
+    return render_template("index.html.jinja2")
 
 @app.route("/user")
 def user():
