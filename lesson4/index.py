@@ -15,3 +15,4 @@ def user():
 @app.route("/product")
 def product():
     return "<h1>product!</h1><p>這是我的第3頁</p>"
+
