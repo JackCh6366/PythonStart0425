@@ -22,6 +22,7 @@ header {
     background-color: #ddd; /* 淺灰色背景 */
     color: #863737;
     padding: 10px 0;
+    position: relative; /* 為了讓 .mobile-menu 相對於 header 定位 */
 }
 
 .logo {
@@ -101,8 +102,8 @@ footer {
     .mobile-menu {
         display: block !important;
         position: absolute;
-        top: 60px; /* 調整位置 */
-        right: 0;
+        top: 100%; /* 從 header 底部開始 */
+        left: 0;   /* 從左邊開始，配合 width: 100% */
         background-color: #ddd;
         width: 100%;
         text-align: center;
