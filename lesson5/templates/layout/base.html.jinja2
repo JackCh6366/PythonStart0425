@@ -13,15 +13,14 @@
     <header>
         <div class="container">
             <div class="logo">
-                職能發展學院
+               <a href="{{url_for('index')}}"> 職能發展學院</a>
             </div>
             <nav class="desktop-nav">
                 <ul>
-                    <li><a href="{{url_for('index')}}">Home</a></li>
                     <li><a href="{{url_for('classes')}}">課程規劃</a></li>
-                    <li><a href="#">最新訊息</a></li>
-                    <li><a href="#">交通資訊</a></li>
-                    <li><a href="#">聯絡我們</a></li>
+                    <li><a href="{{url_for('new')}}">最新訊息</a></li>
+                    <li><a href="{{url_for('traffic')}}">交通資訊</a></li>
+                    <li><a href="{{url_for('contact')}}">聯絡我們</a></li>
                 </ul>
             </nav>
             <div class="mobile-nav">
