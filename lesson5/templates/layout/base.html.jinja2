@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jack的網頁Title</title>
-  <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}"/>
+  <title> {% block title %}
+    職能發展學院
+    {% endblock %}</title>
+  <link rel="stylesheet" href="{{url_for('static',filename='css/base.css')}}"/>
 </head>
 <body>
 
@@ -15,8 +17,8 @@
             </div>
             <nav class="desktop-nav">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">課程規劃</a></li>
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('classes')}}">課程規劃</a></li>
                     <li><a href="#">最新訊息</a></li>
                     <li><a href="#">交通資訊</a></li>
                     <li><a href="#">聯絡我們</a></li>
@@ -30,8 +32,10 @@
 
     <main>
         <section class="content">
+        {% block main %}
             <h1>歡迎來到職能發展學院</h1>
             <p>這裡放置網頁的主要內容...</p>
+        {% endblock%}
         </section>
     </main>
 
