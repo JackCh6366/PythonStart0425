@@ -1,0 +1,120 @@
+/* 全域樣式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f4f4f4; /* 淺灰色背景 */
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Header 樣式 */
+header {
+    background-color: #ddd; /* 淺灰色背景 */
+    color: #333;
+    padding: 10px 0;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* 桌面導覽列樣式 */
+.desktop-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.desktop-nav ul li {
+    margin-left: 20px;
+}
+
+.desktop-nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.desktop-nav ul li a:hover {
+    background-color: #ccc; /* 稍微深一點的灰色 */
+}
+
+/* 手機導覽列樣式 */
+.mobile-nav {
+    display: none; /* 預設隱藏 */
+}
+
+.menu-btn {
+    background-color: #444;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 主要內容樣式 */
+main {
+    padding: 20px 0;
+}
+
+.content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer 樣式 */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #ddd; /* 淺灰色背景 */
+    color: #333;
+    margin-top: 20px;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none; /* 手機螢幕隱藏桌面導覽列 */
+    }
+
+    .mobile-nav {
+        display: block; /* 手機螢幕顯示 menu 按鈕 */
+    }
+
+    .mobile-menu {
+        display: block !important;
+        position: absolute;
+        top: 60px; /* 調整位置 */
+        right: 0;
+        background-color: #ddd;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+    }
+
+    .mobile-menu ul {
+        flex-direction: column;
+    }
+
+    .mobile-menu ul li {
+        margin: 10px 0;
+    }
+}

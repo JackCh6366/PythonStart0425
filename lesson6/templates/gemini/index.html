@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>網頁框架</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                職能發展學院
+            </div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">課程規劃</a></li>
+                    <li><a href="#">最新訊息</a></li>
+                    <li><a href="#">交通資訊</a></li>
+                    <li><a href="#">聯絡我們</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-nav">
+                <button class="menu-btn">menu</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="content">
+            <h1>歡迎來到職能發展學院</h1>
+            <p>這裡放置網頁的主要內容...</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 職能發展學院</p>
+    </footer>
+
+    <script>
+        document.querySelector('.menu-btn').addEventListener('click', function() {
+            document.querySelector('.desktop-nav').classList.toggle('mobile-menu');
+        });
+    </script>
+
+</body>
+</html>
