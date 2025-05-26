@@ -16,7 +16,7 @@ body {
 
 /* 頁首 Header */
 .site-header {
-    background-color: #65619a; /* 根據圖片的淺灰色背景 */
+    background-color: #aaa9ba; /* 根據圖片的淺灰色背景 */
     padding: 15px 0;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -58,7 +58,7 @@ body {
 
 .main-navigation ul li a:hover,
 .main-navigation ul li a.active { /* 可為當前頁面添加 active class */
-    background-color: #3c4679;
+    background-color: #a9bab6;
     color: #fff;
 }
 
@@ -85,7 +85,7 @@ main h1 {
 
 /* 頁尾 Footer */
 footer {
-    background-color: #65619a; /* 根據圖片調整的淺藍色，您可以修改 */
+    background-color: #aaa9ba; /* 根據圖片調整的淺藍色，您可以修改 */
     color: #333; /* 文字顏色，根據圖片內容調整 */
     padding: 30px 50px 10px 50px;
     font-size: 14px;
