@@ -1,0 +1,50 @@
+body {
+    margin: 0; /* 移除瀏覽器預設的 body 邊距 */
+    font-family: Arial, sans-serif; /* 設定預設字型 */
+}
+
+.banner {
+    width: 100%; /* 讓 banner 容器寬度佔滿其父元素的 100% */
+    text-align: center; /* 關鍵：使其內部的 inline 或 inline-block 元素（如 img 和 .banner-text 內的文字）水平置中 */
+    padding: 20px 0; /* 設定上下內邊距各 20px，左右為 0 */
+    background-color: #f0f0f0; /* 可選：為 banner 區域設定一個淺灰色背景 */
+}
+
+.banner img {
+    max-width: 100%; /* 關鍵：確保圖片最大寬度不超過其容器寬度，實現圖片的響應式縮放 */
+    height: auto;   /* 保持圖片的原始長寬比 */
+    display: block; /* 將圖片設為區塊元素，這樣 margin: auto 才能使其水平置中 */
+    margin-left: auto; /* 與 margin-right: auto; 配合，使區塊元素水平置中 */
+    margin-right: auto;
+}
+
+.banner-text {
+    margin-top: 15px; /* 設定文字區塊與上方圖片之間的距離 */
+    font-size: 1.2em; /* 設定文字大小 */
+    color: #333; /* 設定文字顏色 */
+}
+
+/* RWD 中斷點 (Breakpoints) */
+
+/* 適用於平板電腦和較大設備 (螢幕寬度介於 769px 和 992px 之間) */
+@media (min-width: 769px) and (max-width: 992px) {
+    .banner-text {
+        font-size: 1.1em; /* 調整文字大小 */
+    }
+    /* 範例：如果需要，可以在此調整圖片大小或文字的其他樣式 */
+}
+
+/* 適用於較小平板電腦和大型手機 (螢幕寬度介於 577px 和 768px 之間) */
+@media (min-width: 577px) and (max-width: 768px) {
+    .banner-text {
+        font-size: 1em; /* 調整文字大小 */
+    }
+}
+
+/* 適用於手機 (螢幕寬度小於等於 576px) */
+@media (max-width: 576px) {
+    .banner-text {
+        font-size: 0.9em; /* 調整文字大小 */
+        padding: 0 10px; /* 在小螢幕上為文字增加一些左右內邊距，避免文字太貼近邊緣 */
+    }
+}
