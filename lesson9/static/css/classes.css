@@ -13,15 +13,15 @@ body {
 
 .tab-container {
     display: flex;
-    height: 53px;
+    height: 40px;
 }
 
 .tab-item {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 1rem;
     line-height: 1.21;
-    padding: 12px 29px;
+    padding: 12px 12px;
     border: none;
     cursor: pointer;
     outline: none;
@@ -69,8 +69,8 @@ body {
     }
 
     .tab-item {
-        font-size: 18px;
-        padding: 8px 20px;
+        
+        padding: 12px 12px;
     }
 
     /* 標籤可能需要垂直排列或允許水平捲動 - 此處示範水平捲動 */
