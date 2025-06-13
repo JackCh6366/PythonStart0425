@@ -1,9 +1,10 @@
-{% extends "layout/base.html.jinja2" %}
-{% block title %}
-職能發展學院-交通路線
-{% endblock %}
+<!DOCTYPE html>
+<html lang="zh-TW">
 
-{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>芝山站至職能發展學院 交通決策建議系統</title>
     <!-- 引入 Google Fonts 和 Font Awesome 圖示庫 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -373,9 +374,10 @@
             pointer-events: none;
         }
     </style>
-{% endblock %}
+</head>
 
-{% block main %}
+<body>
+
     <div class="container" id="main-container">
         <!-- 頁首 -->
         <div class="header">
@@ -610,4 +612,6 @@
         manualPredictBtn.addEventListener('click', handleManualPrediction);
 
     </script>
-{% endblock %}
+</body>
+
+</html>
