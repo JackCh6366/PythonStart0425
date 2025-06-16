@@ -429,6 +429,35 @@
             </div>
         </div>
 
+        <!-- 固定交通資訊 -->
+        <div class="card fixed-traffic-info">
+            <h2>交通方式參考</h2>
+            <div class="fixed-info-grid">
+                <div class="fixed-info-item">
+                    <i class="fa-solid fa-taxi"></i>
+                    <h3>計程車</h3>
+                    <p>時間：約 8~10 分鐘</p>
+                    <p>金額：約 120~140 元</p>
+                </div>
+                <div class="fixed-info-item">
+                    <i class="fa-solid fa-person-walking"></i>
+                    <h3>步行</h3>
+                    <p>時間：約 35 分鐘</p>
+                    <p>金額：約 0 元</p>
+                </div>
+                <div class="fixed-info-item">
+                    <i class="fa-solid fa-bus"></i>
+                    <h3>公車</h3>
+                    <p>金額：約 7~15 元</p>
+                </div>
+                <div class="fixed-info-item">
+                    <i class="fa-solid fa-bicycle"></i>
+                    <h3>Ubike</h3>
+                    <p>金額：約 0 元</p>
+                </div>
+            </div>
+        </div>
+
         <!-- 手動預測功能區塊 -->
         <div class="card manual-predictor">
             <button class="predictor-toggle" id="predictor-toggle">
@@ -523,7 +552,7 @@
 
             // *** 關鍵修改點：定義時間成本常數 ***
             const UBIKE_EXTRA_TIME = 5;   // U-Bike 租借、還車、步行總共約 5 分鐘
-            const BUS_RIDE_TIME = 9;      // 公車本身的行駛時間約 9 分鐘
+            const BUS_RIDE_TIME = 15;      // 公車本身的行駛時間約 15 分鐘
             const BUS_EXTRA_TIME = 3;     // 從學院走到公車站牌、等紅綠燈約 3 分鐘
 
             // 計算總時間 (包含所有環節)
