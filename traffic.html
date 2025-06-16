@@ -1,9 +1,10 @@
-{% extends "layout/base.html.jinja2" %}
-{% block title %}
-職能發展學院-交通路線
-{% endblock %}
+<!DOCTYPE html>
+<html lang="zh-TW">
 
-{% block head %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>芝山站至職能發展學院 交通決策建議系統</title>
     <!-- 引入 Google Fonts 和 Font Awesome 圖示庫 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,7 +96,7 @@
         }
 
         .recommendation-icon-bg {
-            width: 48px; 
+            width: 48px;
             height: 48px;
             border-radius: 50%;
             display: flex;
@@ -373,9 +374,10 @@
             pointer-events: none;
         }
     </style>
-{% endblock %}
+</head>
 
-{% block main %}
+<body>
+
     <div class="container" id="main-container">
         <!-- 頁首 -->
         <div class="header">
@@ -523,7 +525,7 @@
 
             // *** 關鍵修改點：定義時間成本常數 ***
             const UBIKE_EXTRA_TIME = 5;   // U-Bike 租借、還車、步行總共約 5 分鐘
-            const BUS_RIDE_TIME = 15;      // 公車本身的行駛時間約 15 分鐘
+            const BUS_RIDE_TIME = 9;      // 公車本身的行駛時間約 9 分鐘
             const BUS_EXTRA_TIME = 3;     // 從學院走到公車站牌、等紅綠燈約 3 分鐘
 
             // 計算總時間 (包含所有環節)
@@ -610,4 +612,6 @@
         manualPredictBtn.addEventListener('click', handleManualPrediction);
 
     </script>
-{% endblock %}
+</body>
+
+</html>
