@@ -255,15 +255,152 @@
             background-color: #0056b3;
         }
 
-        #reload-btn:active {
-            transform: scale(0.98);
+            #reload-btn:active {
+                transform: scale(0.98);
+            }
+
+        /* --- 7. 交通備註樣式 --- */
+        .traffic-notes {
+            margin-top: 20px;
         }
 
-        /* --- 7. 桌面版 RWD 樣式 --- */
+        .traffic-notes h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .traffic-notes ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .traffic-notes li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        /* --- 8. 桌面版 RWD 樣式 --- */
         @media (min-width: 768px) {
             .container {
-                max-width: 600px;
+                max-width: 960px; /* 調整容器最大寬度以容納備註區塊 */
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
             }
+
+            #main-container {
+                width: 600px; /* 主要內容區塊寬度 */
+            }
+
+            .traffic-notes {
+                width: 300px; /* 備註區塊寬度 */
+                margin-top: 0;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .menu-btn {
+                display: none;
+            }
+
+            .desktop-only {
+                display: flex;
+            }
+
+            .mobile-only {
+                display: none;
+            }
+
+            .route-info {
+                justify-content: space-between;
+                padding: 0 10px;
+                margin-bottom: 10px;
+                color: var(--gray);
+            }
+
+            .recommendation-card {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 30px;
+            }
+
+            .recommendation-body {
+                flex-grow: 1;
+                margin-left: 20px;
+            }
+
+            .recommendation-body .reason ul {
+                padding-left: 20px;
+                margin: 0;
+            }
+
+            .recommendation-body .reason li {
+                margin-bottom: 5px;
+            }
+
+            .recommendation-card .main-icon {
+                font-size: 50px;
+                color: var(--gray);
+                opacity: 0.2;
+            }
+
+            .details-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .detail-card {
+                padding: 16px;
+            }
+
+            .detail-header {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+
+            .detail-header i {
+                font-size: 20px;
+                color: var(--gray);
+            }
+
+            .detail-header .brand {
+                font-size: 12px;
+                background-color: #f0f0f0;
+                padding: 2px 6px;
+                border-radius: 4px;
+            }
+
+            .detail-header .title {
+                font-weight: 500;
+            }
+
+            .detail-content {
+                font-size: 16px;
+            }
+
+            .detail-content .value {
+                font-size: 24px;
+                font-weight: 700;
+                margin-right: 4px;
+            }
+
+            #ubike-availability .value {
+                color: var(--success-color);
+            }
+
+            #bus-eta .value {
+                color: var(--primary-color);
+            }
+        }
 
             .header h1 {
                 font-size: 28px;
@@ -448,6 +585,17 @@
             </div>
         </div>
 
+
+        <!-- 交通備註資訊 -->
+        <div class="card traffic-notes">
+            <h2>交通備註</h2>
+            <ul>
+                <li>步行：費用成本 0元，步行時間 30~35分鐘</li>
+                <li>Youbike：目前前30分鐘0元，騎乘估計時間 10~20分鐘</li>
+                <li>市民小巴 11：費用成本 7~15元，搭乘時間約 20~30分鐘</li>
+                <li>計程車：費用約 120~140元左右，搭乘時間約 8~10 分鐘</li>
+            </ul>
+        </div>
 
         <!-- 重新查詢按鈕 -->
         <button id="reload-btn">重新查詢</button>
