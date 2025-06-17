@@ -1,10 +1,20 @@
 {% extends "layout/base.html.jinja2" %}
 {% block title %}
-職能發展學院-跟我聯絡
+
 {% endblock %}
 
 {% block main %}
-<h1>{{self.title()}}</h1>
+{{self.title()}}
 
-{{ super() }}
+<div class="container">
+    <h2>團隊成員介紹</h2>
+    <div class="team-info">
+        <h3>團隊名稱：Youbike小萌新</h3>
+        <p><strong>團隊隊長：</strong>Roger 俞詠銘</p>
+        <p><strong>團隊成員：</strong>Jack 陳昭仁</p>
+    </div>
+    
+
+
+
 {% endblock %}
