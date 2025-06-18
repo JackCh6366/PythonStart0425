@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>芝山站至職能發展學院 交通決策建議系統</title>
+    <!-- 引入 Google Fonts 和 Font Awesome 圖示庫 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* --- 1. 全局與基礎樣式 (Mobile First) --- */
+        :root {
+            --primary-color: #007bff;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --light-gray: #f8f9fa;
+            --gray: #6c757d;
+            --dark-gray: #343a40;
+            --border-color: #e9ecef;
+            --border-radius: 12px;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
+
+        /* --- 2. 頁首與標題 --- */
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .menu-btn {
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: var(--gray);
+            cursor: pointer;
+        }
+
+        /* --- 3. 卡片基礎樣式 --- */
+        .card {
+            background-color: #fff;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        /* --- 4. 主要推薦卡片 --- */
+        .recommendation-card {
+            padding: 24px;
+            border-width: 2px;
+        }
+
+        .recommendation-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 16px;
+        }
+
+        .recommendation-icon-bg {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .recommendation-icon-bg i {
+            color: #fff;
+            font-size: 22px;
+        }
+
+        .recommendation-title {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .recommendation-title .bike-icon {
+            font-size: 20px;
+            margin-left: 8px;
+            color: var(--gray);
+        }
+
+        .recommendation-body .time-info {
+            font-size: 16px;
+            color: var(--dark-gray);
+            margin-bottom: 12px;
+        }
+
+        .time-info .highlight {
+            background-color: #fffbe6;
+            color: #d48806;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .recommendation-body .reason {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .recommend-ubike {
+            border-color: var(--success-color);
+        }
+
+        .recommend-ubike .recommendation-icon-bg {
+            background-color: var(--success-color);
+        }
+
+        .recommend-bus {
+            border-color: var(--primary-color);
+        }
+
+        .recommend-bus .recommendation-icon-bg {
+            background-color: var(--primary-color);
+        }
+
+        /* --- 5. 手動預測區塊 --- */
+        .manual-predictor {
+            text-align: left;
+        }
+
+        .predictor-toggle {
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            padding: 10px 0;
+            border: none;
+            background: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .predictor-toggle i {
+            transition: transform 0.3s ease;
+        }
+
+        .predictor-content {
+            display: none;
+            /* 預設隱藏 */
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        #manual-predict-btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            background-color: var(--success-color);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        #manual-predict-btn:hover {
+            background-color: #218838;
+        }
+
+        #manual-result {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+            display: none;
+            /* 預設隱藏 */
+        }
+
+        /* --- 6. 按鈕 --- */
+        #reload-btn {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
+        }
+
+        #reload-btn:hover {
+            background-color: #0056b3;
+        }
+
+        #reload-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* --- 7. 桌面版 RWD 樣式 --- */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 600px;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .menu-btn {
+                display: none;
+            }
+
+            .desktop-only {
+                display: flex;
+            }
+
+            .mobile-only {
+                display: none;
+            }
+
+            .route-info {
+                justify-content: space-between;
+                padding: 0 10px;
+                margin-bottom: 10px;
+                color: var(--gray);
+            }
+
+            .recommendation-card {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 30px;
+            }
+
+            .recommendation-body {
+                flex-grow: 1;
+                margin-left: 20px;
+            }
+
+            .recommendation-body .reason ul {
+                padding-left: 20px;
+                margin: 0;
+            }
+
+            .recommendation-body .reason li {
+                margin-bottom: 5px;
+            }
+
+            .recommendation-card .main-icon {
+                font-size: 50px;
+                color: var(--gray);
+                opacity: 0.2;
+            }
+
+            .details-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .detail-card {
+                padding: 16px;
+            }
+
+            .detail-header {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+
+            .detail-header i {
+                font-size: 20px;
+                color: var(--gray);
+            }
+
+            .detail-header .brand {
+                font-size: 12px;
+                background-color: #f0f0f0;
+                padding: 2px 6px;
+                border-radius: 4px;
+            }
+
+            .detail-header .title {
+                font-weight: 500;
+            }
+
+            .detail-content {
+                font-size: 16px;
+            }
+
+            .detail-content .value {
+                font-size: 24px;
+                font-weight: 700;
+                margin-right: 4px;
+            }
+
+            #ubike-availability .value {
+                color: var(--success-color);
+            }
+
+            #bus-eta .value {
+                color: var(--primary-color);
+            }
+        }
+
+        /* 載入中動畫 */
+        .loading {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" id="main-container">
+        <!-- 頁首 -->
+        <div class="header">
+            <h1>芝山站至職能發展學院<br>交通決策建議系統</h1>
+            <div class="menu-btn" title="選單"><i class="fa-solid fa-bars"></i></div>
+        </div>
+
+        <!-- 路線資訊 (僅桌面顯示) -->
+        <div class="route-info desktop-only">
+            <span>起點： 芝山站</span>
+            <span>至： 職能發展學院</span>
+        </div>
+
+        <!-- 主要建議卡片 -->
+        <div id="recommendation-card" class="card recommendation-card">
+            <div class="desktop-only">
+                <div class="recommendation-header">
+                    <div id="rec-icon-bg-desktop" class="recommendation-icon-bg">
+                        <i id="rec-icon-desktop" class="fa-solid fa-check"></i>
+                    </div>
+                </div>
+                <div class="recommendation-body">
+                    <h2 id="rec-title-desktop" class="recommendation-title">正在查詢...</h2>
+                    <p class="time-info">預估時間：<span id="rec-time-desktop" class="highlight">-- 分鐘</span></p>
+                    <div id="rec-reason-desktop" class="reason">
+                        <ul>
+                            <li>正在為您計算最佳交通方式...</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="main-icon">
+                    <i id="rec-main-icon-desktop" class="fa-solid fa-hourglass-half"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 詳細資訊 (桌面版) -->
+        <div class="details-grid">
+            <div class="card detail-card">
+                <div class="detail-header">
+                    <i class="fa-solid fa-bicycle"></i><span class="brand">U-Bike 2.0</span><span
+                        class="title">芝山站</span>
+                </div>
+                <div id="ubike-availability" class="detail-content">可借車輛：<span class="value">--</span> 輛</div>
+            </div>
+            <div class="card detail-card">
+                <div class="detail-header">
+                    <i class="fa-solid fa-bus"></i><span class="title">小巴11</span>
+                </div>
+                <div id="bus-eta" class="detail-content">預估到站時間：<span class="value">--</span> 分鐘</div>
+            </div>
+        </div>
+
+        <!-- 手動預測功能區塊 -->
+        <div class="card manual-predictor">
+            <button class="predictor-toggle" id="predictor-toggle">
+                <span><i class="fa-solid fa-calculator" style="margin-right:8px;"></i>手動預測騎乘時間</span>
+                <i id="toggle-icon" class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="predictor-content" id="predictor-content">
+                <div class="form-group">
+                    <label for="date-input">日期</label>
+                    <input type="date" id="date-input">
+                </div>
+                <div class="form-group">
+                    <label for="time-input">時間 (小時, 0-23)</label>
+                    <input type="number" id="time-input" min="0" max="23" placeholder="例如: 8 (代表早上8點)">
+                </div>
+                <button id="manual-predict-btn">進行預測</button>
+                <div id="manual-result"></div>
+            </div>
+        </div>
+
+
+        <!-- 重新查詢按鈕 -->
+        <button id="reload-btn">重新查詢</button>
+    </div>
+
+    <script>
+        // --- 1. 模擬後端與模型預測 ---
+        function simulateModelPrediction(hour, dayOfWeek) {
+            let baseTime = 825;
+            let trafficFactor = 0;
+            if (dayOfWeek <= 4) {
+                if (hour >= 7 && hour <= 9) trafficFactor = 200;
+                else if (hour >= 17 && hour <= 19) trafficFactor = 250;
+                else trafficFactor = 50;
+            } else {
+                trafficFactor = 20;
+            }
+            const trueTotalSeconds = baseTime + Math.random() * trafficFactor;
+            const noise = (Math.random() - 0.5) * 2 * 120;
+            const simulatedDelay = trueTotalSeconds + noise;
+            const prediction = 0.8 * simulatedDelay + 0.1 * hour + 0.2 * dayOfWeek + 50;
+            return prediction;
+        }
+
+        async function getRealtimeDataAndPrediction() {
+            const availableBikes = Math.floor(Math.random() * 20);
+            const busEta = Math.floor(Math.random() * 15) + 1;
+            const now = new Date();
+            const hour = now.getHours();
+            const dayOfWeek = (now.getDay() + 6) % 7;
+            const rideTimePredictionInSeconds = simulateModelPrediction(hour, dayOfWeek);
+            await new Promise(resolve => setTimeout(resolve, 500));
+            return {
+                ubike: {
+                    availableBikes: availableBikes,
+                    predictedRideTime: rideTimePredictionInSeconds / 60
+                },
+                bus: {
+                    eta: busEta
+                }
+            };
+        }
+
+        // --- 2. DOM 元素獲取 (省略，與上一版相同) ---
+        const mainContainer = document.getElementById('main-container');
+        const recommendationCard = document.getElementById('recommendation-card');
+        const recIconBgDesktop = document.getElementById('rec-icon-bg-desktop');
+        const recIconDesktop = document.getElementById('rec-icon-desktop');
+        const recTitleDesktop = document.getElementById('rec-title-desktop');
+        const recTimeDesktop = document.getElementById('rec-time-desktop');
+        const recReasonDesktop = document.getElementById('rec-reason-desktop');
+        const recMainIconDesktop = document.getElementById('rec-main-icon-desktop');
+        const ubikeAvailability = document.getElementById('ubike-availability');
+        const busEta = document.getElementById('bus-eta');
+        const reloadBtn = document.getElementById('reload-btn');
+        const predictorToggle = document.getElementById('predictor-toggle');
+        const predictorContent = document.getElementById('predictor-content');
+        const toggleIcon = document.getElementById('toggle-icon');
+        const dateInput = document.getElementById('date-input');
+        const timeInput = document.getElementById('time-input');
+        const manualPredictBtn = document.getElementById('manual-predict-btn');
+        const manualResult = document.getElementById('manual-result');
+
+
+        // --- 3. 核心決策與 UI 更新邏輯 ---
+        async function updateRecommendation() {
+            mainContainer.classList.add('loading');
+            reloadBtn.innerText = "查詢中...";
+            reloadBtn.disabled = true;
+
+            const data = await getRealtimeDataAndPrediction();
+
+            // *** 關鍵修改點：定義時間成本常數 ***
+            const UBIKE_EXTRA_TIME = 5;   // U-Bike 租借、還車、步行總共約 5 分鐘
+            const BUS_RIDE_TIME = 9;      // 公車本身的行駛時間約 9 分鐘
+            const BUS_EXTRA_TIME = 3;     // 從學院走到公車站牌、等紅綠燈約 3 分鐘
+
+            // 計算總時間 (包含所有環節)
+            const ubikeTotalTime = data.ubike.predictedRideTime + UBIKE_EXTRA_TIME;
+            const busTotalTime = data.bus.eta + BUS_RIDE_TIME + BUS_EXTRA_TIME;
+
+            ubikeAvailability.innerHTML = `可借車輛：<span class="value">${data.ubike.availableBikes}</span> 輛`;
+            busEta.innerHTML = `預估到站時間：<span class="value">${data.bus.eta}</span> 分鐘`;
+
+            // *** 關鍵修改點：更新決策邏輯 ***
+            let recommendation = 'ubike';
+            let reasonForBus = '';
+
+            if (data.ubike.availableBikes < 3) {
+                recommendation = 'bus';
+                reasonForBus = 'U-Bike 車輛不足，建議搭乘公車較為保險。';
+            } else if (ubikeTotalTime > busTotalTime + 3) { // 只有當U-Bike慢超過3分鐘才換
+                recommendation = 'bus';
+                reasonForBus = `U-Bike 總時間 (約 ${Math.round(ubikeTotalTime)} 分鐘) 較長，搭乘公車更有效率。`;
+            }
+
+            // 更新 UI
+            recommendationCard.className = `card recommendation-card ${recommendation === 'ubike' ? 'recommend-ubike' : 'recommend-bus'}`;
+            if (recommendation === 'ubike') {
+                recIconBgDesktop.style.backgroundColor = 'var(--success-color)';
+                recIconDesktop.className = 'fa-solid fa-bicycle';
+                recTitleDesktop.innerText = '推薦騎乘 U-Bike';
+                recTimeDesktop.innerText = `${Math.round(ubikeTotalTime)} 分鐘`;
+                recReasonDesktop.innerHTML = `
+                    <ul>
+                        <li>步行 + 租借步程較短，機動性高</li>
+                        <li>公車預估總時間約 ${Math.round(busTotalTime)} 分鐘</li>
+                    </ul>
+                `;
+                recMainIconDesktop.className = 'fa-solid fa-bicycle main-icon';
+            } else { // 推薦公車
+                recIconBgDesktop.style.backgroundColor = 'var(--primary-color)';
+                recIconDesktop.className = 'fa-solid fa-bus';
+                recTitleDesktop.innerText = '推薦搭乘 小巴11';
+                recTimeDesktop.innerText = `${Math.round(busTotalTime)} 分鐘`;
+                recReasonDesktop.innerHTML = `<ul><li>${reasonForBus}</li></ul>`;
+                recMainIconDesktop.className = 'fa-solid fa-bus main-icon';
+            }
+
+            mainContainer.classList.remove('loading');
+            reloadBtn.innerText = "重新查詢";
+            reloadBtn.disabled = false;
+        }
+
+        // --- 4. 手動預測功能邏輯 ---
+        function handleManualPrediction() {
+            const dateValue = dateInput.value;
+            const timeValue = timeInput.value;
+
+            if (!dateValue || timeValue === '' || parseInt(timeValue, 10) < 0 || parseInt(timeValue, 10) > 23) {
+                manualResult.innerText = "請輸入有效的日期和 0-23 之間的小時。";
+                manualResult.style.color = '#dc3545';
+                manualResult.style.display = 'block';
+                return;
+            }
+
+            const date = new Date(dateValue);
+            const dayOfWeek = (date.getDay() + 6) % 7;
+            const hour = parseInt(timeValue, 10);
+
+            const predictedSeconds = simulateModelPrediction(hour, dayOfWeek);
+            const predictedMinutes = Math.round(predictedSeconds / 60);
+
+            manualResult.innerText = `模型預測騎乘時間約為：${predictedMinutes} 分鐘`;
+            manualResult.style.color = 'var(--dark-gray)';
+            manualResult.style.display = 'block';
+        }
+
+        // --- 5. 事件監聽 ---
+        document.addEventListener('DOMContentLoaded', updateRecommendation);
+        reloadBtn.addEventListener('click', updateRecommendation);
+
+        predictorToggle.addEventListener('click', () => {
+            const isHidden = predictorContent.style.display === 'none' || predictorContent.style.display === '';
+            predictorContent.style.display = isHidden ? 'block' : 'none';
+            toggleIcon.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+        });
+
+        manualPredictBtn.addEventListener('click', handleManualPrediction);
+
+    </script>
+</body>
+
+</html>
