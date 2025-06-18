@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: rgb(98, 96, 96)
+    background-color: black
 }
 
 .container {
@@ -43,7 +43,7 @@ body {
 
 .header li a:hover {}
 
-.box1 {
+.zone1 {
     background-image: url(./banner.jpg);
     height: 750px;
     padding-top: 150px;
@@ -51,7 +51,7 @@ body {
     box-sizing: border-box;
 }
 
-.box1 h2 {
+.zone1 h2 {
     font-family: BowlbyOne;
     font-weight: 400;
     font-style: normal;
@@ -61,7 +61,7 @@ body {
     padding-left: 50px;
 }
 
-.box1 p {
+.zone1 p {
     padding-top: 10px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 24px;
@@ -69,13 +69,13 @@ body {
     padding-left: 50px;
 }
 
-.box2 {
+.zone2 {
     display: flex;
     justify-content: center;
     padding: 75px;
 }
 
-.box21 {
+.z201 {
     width: 355px;
     height: 490px;
     background-color: rgb(240, 115, 38);
@@ -83,14 +83,14 @@ body {
     box-sizing: border-box;
 }
 
-.box21 h3 {
+.z201 h3 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 80px;
     font-weight: bold;
     color: white;
 }
 
-.box21 h4 {
+.z201 h4 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     font-weight: normal;
@@ -99,7 +99,7 @@ body {
     margin-bottom: 20px;
 }
 
-.box21 p {
+.z201 p {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 25px;
     font-weight: normal;
@@ -108,12 +108,12 @@ body {
 
 }
 
-.box21 p img {
+.z201 p img {
     margin-top: 60px;
 }
 
-
-.box22 {
+/* .z202 */
+.z202 {
     width: 355px;
     height: 490px;
     background-color: rgb(235, 21, 21);
@@ -121,14 +121,14 @@ body {
     box-sizing: border-box;
 }
 
-.box22 h3 {
+.z202 h3 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 80px;
     font-weight: bold;
     color: white;
 }
 
-.box22 h4 {
+.z202 h4 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     font-weight: normal;
@@ -137,7 +137,7 @@ body {
     margin-bottom: 20px;
 }
 
-.box22 p {
+.z202 p {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 25px;
     font-weight: normal;
@@ -146,12 +146,12 @@ body {
 
 }
 
-.box22 p img {
+.z202 p img {
     margin-top: 60px;
 }
 
-
-.box23 {
+/* .z203 */
+.z203 {
     width: 355px;
     height: 490px;
     background-color: rgb(50, 50, 47);
@@ -159,14 +159,14 @@ body {
     box-sizing: border-box;
 }
 
-.box23 h3 {
+.z203 h3 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 80px;
     font-weight: bold;
     color: white;
 }
 
-.box23 h4 {
+.z203 h4 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     font-weight: normal;
@@ -175,7 +175,7 @@ body {
     margin-bottom: 20px;
 }
 
-.box23 p {
+.z203 p {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 25px;
     font-weight: normal;
@@ -184,11 +184,12 @@ body {
 
 }
 
-.box23 p img {
+.z203 p img {
     margin-top: 60px;
 }
 
-.box24 {
+/* .z204 */
+.z204 {
     width: 355px;
     height: 490px;
     background-color: rgb(96, 96, 95);
@@ -196,14 +197,14 @@ body {
     box-sizing: border-box;
 }
 
-.box24 h3 {
+.z204 h3 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 80px;
     font-weight: bold;
     color: white;
 }
 
-.box24 h4 {
+.z204 h4 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     font-weight: normal;
@@ -212,7 +213,7 @@ body {
     margin-bottom: 20px;
 }
 
-.box24 p {
+.z204 p {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 25px;
     font-weight: normal;
@@ -221,13 +222,13 @@ body {
 
 }
 
-.box24 p img {
+.z204 p img {
     margin-top: 60px;
 }
 
+/* Zone 3 */
 
-
-.box3 {
+.zone3 {
     background-color: rgb(223, 220, 220);
     padding-top: 50px;
     padding-bottom: 50px;
@@ -236,20 +237,20 @@ body {
 
 }
 
-.box3 h3 {
+.zone3 h3 {
     color: rgb(228, 104, 22);
     font-size: 80px;
     font-weight: bold;
     margin-bottom: 30px;
 }
 
-.box3 p {
+.zone3 p {
     color: rgb(0, 0, 0);
     font-size: 20px;
     margin-bottom: 10px;
 }
 
-.box3 a {
+.zone3 a {
     text-decoration: none;
     color: white;
     font-size: 20px;
@@ -263,24 +264,24 @@ body {
 
 }
 
+/* Zone 4 */
 
-
-.box4 {
+.zone4 {
     padding: 75px 0;
 }
 
-.upper {
+.z4upper {
     display: flex;
     justify-content: center;
 }
 
-.b401 {
+.z401 {
     width: 450px;
     height: 450px;
     background-image: url(./photo1.jpg);
 }
 
-.b402 {
+.z402 {
     width: 450px;
     height: 450px;
     background-color: rgb(232, 229, 229);
@@ -290,37 +291,37 @@ body {
 
 }
 
-.b402 h4 {
+.z402 h4 {
     font-family: "Bebas Neue";
     font-size: 36px;
     font-weight: 800;
     font-style: normal;
 }
 
-.b402 p {
+.z402 p {
     padding-top: 20px;
 
 }
 
-.b402 a {
+.z402 a {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 24px;
     color: rgb(85, 85, 85)
 }
 
-.b403 {
+.z403 {
     width: 450px;
     height: 450px;
     background-image: url(./photo2.jpg);
 }
 
-.lower {
+.z4lower {
     display: flex;
     justify-content: center;
 
 }
 
-.b404 {
+.z404 {
     width: 450px;
     height: 450px;
     background-color: rgb(232, 229, 229);
@@ -329,9 +330,9 @@ body {
     box-sizing: border-box;
 }
 
-.b404 p img {}
+.z404 p img {}
 
-.b404 h4 {
+.z404 h4 {
     font-family: "Bebas Neue";
     font-size: 36px;
     font-weight: 800;
@@ -340,14 +341,14 @@ body {
 
 }
 
-.b404 p {
+.z404 p {
     font-family: arial;
     font-size: 16pt;
     padding-top: 10px;
 
 }
 
-.b404 a {
+.z404 a {
     /* height: 150px; 為什麼a下 height沒作用?*/
     /* padding-bottom: 15px; 下 padding-bottom也沒作用*/
     line-height: 40px;
@@ -355,15 +356,15 @@ body {
     color: rgb(85, 85, 85);
 }
 
-.b405 {
+.z405 {
     width: 450px;
     height: 450px;
     background-image: url(./photo3.jpg);
 }
 
-.b405 p img {}
+.z405 p img {}
 
-.b406 {
+.z406 {
     width: 450px;
     height: 450px;
     background-color: rgb(232, 229, 229);
@@ -372,9 +373,9 @@ body {
     box-sizing: border-box;
 }
 
-.b406 p img {}
+.z406 p img {}
 
-.b406 h4 {
+.z406 h4 {
     font-family: "Bebas Neue";
     font-size: 36px;
     font-weight: 800;
@@ -382,21 +383,21 @@ body {
     padding-top: 20px;
 }
 
-.b406 p {
+.z406 p {
     font-family: arial;
     font-size: 16pt;
     padding-top: 10px;
 }
 
-.b406 a {
+.z406 a {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 24px;
     color: rgb(85, 85, 85);
     line-height: 40px;
 }
 
-
-.box5 {
+/* Zone 5 */
+.zone5 {
     background-image: url(./handbg.jpg);
     background-repeat: no-repeat;
     height: 900px;
@@ -405,7 +406,7 @@ body {
     justify-content: center;
  }
 
-.box5 h5 {
+.zone5 h5 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 24px;
     color: rgb(105, 104, 104);
@@ -413,7 +414,7 @@ body {
 
 }
 
-.box5 p {
+.zone5 p {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     font-style: italic;
@@ -421,7 +422,7 @@ body {
     
 }
 
-.b5 {
+.box5 {
     width: 1280px;
     height:500px;
     text-align: center;
@@ -432,7 +433,7 @@ body {
 
 }
 
-.b5L {
+.z5L {
     background-color: white;
     width: 400px;
     height: 400px;
@@ -444,7 +445,7 @@ body {
 
 }
 
-.b5M {
+.z5M {
     background-color: white;
     width: 400px;
     height: 400px;
@@ -454,7 +455,7 @@ body {
 
 }
 
-.b5R {
+.z5R {
     background-color: white;
     width: 400px;
     height: 400px;
